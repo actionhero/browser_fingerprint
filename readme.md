@@ -1,10 +1,10 @@
-# browserFingerprint
+# browser_fingerprint
 
 This module attempts to uniquely identify browsers by examining their header and connection information.  This information can be used as a "poor-man's" session identifier in your node projects. This module can optionally set a cookie to 'lock' in a consistent fingerprint. 
 
 ```javascript
 	var http = require('http');
-	var bf = require('browserFingerprint');
+	var bf = require('browser_fingerprint');
 
 	// these are the default options
 	var options = {

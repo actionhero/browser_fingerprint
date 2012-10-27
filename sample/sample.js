@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 var http = require('http');
-// var bf = require('browserFingerprint'); <<-- Normally, you would do this 
-var bf = require('../lib/browserFingerprint.js');
+// var bf = require('browser_fingerprint'); <<-- Normally, you would do this 
+var bf = require('../lib/browser_fingerprint.js');
 
 // these are the default options
 var options = {
-	cookieKey: "__browserFingerprintf",
+	cookieKey: "__browserFingerprint",
 	toSetCookie: true,
 	onlyStaticElements: false,
 };

@@ -8,26 +8,26 @@ verbose config file /usr/local/etc/npmrc
 verbose config file /usr/local/lib/node_modules/npm/npmrc
 verbose umasking from 27 755
 verbose caching /Users/evantahler/PROJECTS/browser-fingerprint/package.json
-verbose loadDefaults browserFingerprint@0.0.1
+verbose loadDefaults browser-fingerprint@0.0.1
 verbose run-script [ 'prestart', 'start', 'poststart' ]
-info prestart browserFingerprint@0.0.1
-info start browserFingerprint@0.0.1
+info prestart browser-fingerprint@0.0.1
+info start browser-fingerprint@0.0.1
 verbose unsafe-perm in lifecycle true
 silly exec sh "-c" "./sample/sample.js"
 silly spawning [ 'sh',
 silly spawning   [ '-c', './sample/sample.js' ],
 silly spawning   '/Users/evantahler/PROJECTS/browser-fingerprint' ]
-info browserFingerprint@0.0.1 Failed to exec start script
-ERR! browserFingerprint@0.0.1 start: `./sample/sample.js`
+info browser-fingerprint@0.0.1 Failed to exec start script
+ERR! browser-fingerprint@0.0.1 start: `./sample/sample.js`
 ERR! `sh "-c" "./sample/sample.js"` failed with 1
 ERR! 
-ERR! Failed at the browserFingerprint@0.0.1 start script.
-ERR! This is most likely a problem with the browserFingerprint package,
+ERR! Failed at the browser-fingerprint@0.0.1 start script.
+ERR! This is most likely a problem with the browser-fingerprint package,
 ERR! not with npm itself.
 ERR! Tell the author that this fails on your system:
 ERR!     ./sample/sample.js
 ERR! You can get their info via:
-ERR!     npm owner ls browserFingerprint
+ERR!     npm owner ls browser-fingerprint
 ERR! There is likely additional logging output above.
 ERR! 
 ERR! System Darwin 12.2.0
@@ -36,6 +36,6 @@ ERR! cwd /Users/evantahler/PROJECTS/browser-fingerprint
 ERR! node -v v0.8.6
 ERR! npm -v 1.1.0-beta-9
 ERR! code ELIFECYCLE
-ERR! message browserFingerprint@0.0.1 start: `./sample/sample.js`
+ERR! message browser-fingerprint@0.0.1 start: `./sample/sample.js`
 ERR! message `sh "-c" "./sample/sample.js"` failed with 1
 verbose exit [ 1, true ]
