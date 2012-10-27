@@ -6,7 +6,7 @@ var bf = require('../lib/browser_fingerprint.js');
 
 // these are the default options
 var options = {
-	cookieKey: "__browserFingerprint",
+	cookieKey: "__browser_fingerprint",
 	toSetCookie: true,
 	onlyStaticElements: false,
 };
