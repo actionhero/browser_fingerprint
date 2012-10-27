@@ -1,0 +1,41 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+info using npm@1.1.0-beta-9
+info using node@v0.8.6
+verbose /usr/local/bin/node node symlink
+verbose config file /Users/evantahler/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+verbose umasking from 27 755
+verbose caching /Users/evantahler/PROJECTS/browser-fingerprint/package.json
+verbose loadDefaults browserFingerprint@0.0.1
+verbose run-script [ 'prestart', 'start', 'poststart' ]
+info prestart browserFingerprint@0.0.1
+info start browserFingerprint@0.0.1
+verbose unsafe-perm in lifecycle true
+silly exec sh "-c" "./sample/sample.js"
+silly spawning [ 'sh',
+silly spawning   [ '-c', './sample/sample.js' ],
+silly spawning   '/Users/evantahler/PROJECTS/browser-fingerprint' ]
+info browserFingerprint@0.0.1 Failed to exec start script
+ERR! browserFingerprint@0.0.1 start: `./sample/sample.js`
+ERR! `sh "-c" "./sample/sample.js"` failed with 1
+ERR! 
+ERR! Failed at the browserFingerprint@0.0.1 start script.
+ERR! This is most likely a problem with the browserFingerprint package,
+ERR! not with npm itself.
+ERR! Tell the author that this fails on your system:
+ERR!     ./sample/sample.js
+ERR! You can get their info via:
+ERR!     npm owner ls browserFingerprint
+ERR! There is likely additional logging output above.
+ERR! 
+ERR! System Darwin 12.2.0
+ERR! command "node" "/usr/local/bin/npm" "start"
+ERR! cwd /Users/evantahler/PROJECTS/browser-fingerprint
+ERR! node -v v0.8.6
+ERR! npm -v 1.1.0-beta-9
+ERR! code ELIFECYCLE
+ERR! message browserFingerprint@0.0.1 start: `./sample/sample.js`
+ERR! message `sh "-c" "./sample/sample.js"` failed with 1
+verbose exit [ 1, true ]

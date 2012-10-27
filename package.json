@@ -1,0 +1,23 @@
+{
+  "author": "Evan Tahler <evantahler@gmail.com>",
+  "name": "browserFingerprint",
+  "description": "Uniquely identify browsers",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/evantahler/browserFingerprint.git"
+  },
+  "main": "api",
+  "keywords": ["browser", "fingerprint", "session", "browserFingerprint"],
+  "main" : "./lib/browserFingerprint.js",
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "dependencies": {
+	},
+  "devDependencies": {
+  },
+  "scripts": {
+    "start": "./sample/sample.js"
+  }
+}
