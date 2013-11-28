@@ -11,7 +11,7 @@
   "keywords": ["browser", "fingerprint", "session", "browserFingerprint", "browser_fingerprint"],
   "main" : "./lib/browser_fingerprint.js",
   "engines": {
-    "node": ">=0.6.0"
+    "node": ">=0.8.0"
   },
   "dependencies": {
 	},
