@@ -1,5 +1,7 @@
 # browser_fingerprint
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/evantahler/browser_fingerprint/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 This module attempts to uniquely identify browsers by examining their header and connection information.  This information can be used as a "poor-man's" session identifier in your node projects. This module can optionally set a cookie to 'lock' in a consistent fingerprint. 
 
 Resuming sessions require that either the cookie be returned to the server, or a x-header `x-__browserFingerprint` in the default case, be sent on subsequent requests
