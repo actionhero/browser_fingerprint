@@ -9,6 +9,11 @@ var options = {
 	cookieKey: "__browser_fingerprint",
 	toSetCookie: true,
 	onlyStaticElements: false,
+	settings: {
+    path: '/',
+    // expires: 3600000,
+    expires: 1000,
+  }
 };
 
 http.createServer(function (req, res) {

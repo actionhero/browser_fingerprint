@@ -13,6 +13,10 @@ Resuming sessions require that either the cookie be returned to the server, or a
 		cookieKey: "__browserFingerprint",
 		toSetCookie: true,
 		onlyStaticElements: false,
+		settings: {
+	    path: '/',
+	    expires: 3600000,
+	  }
 	};
 
 	http.createServer(function (req, res) {
