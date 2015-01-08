@@ -33,7 +33,7 @@ Resuming sessions require that either the cookie be returned to the server, or a
 			
 			res.end(resp);
 			
-			console.log('requset from ' + req.connection.remoteAddress + ', fingerprint -> ' + fingerprint);
+			console.log('request from ' + req.connection.remoteAddress + ', fingerprint -> ' + fingerprint);
 		});
 	}).listen(8080, '127.0.0.1');
 
