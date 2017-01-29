@@ -1,4 +1,6 @@
-# browser_fingerprint
+# Browser Fingerprint
+
+[![Build Status](https://travis-ci.org/evantahler/browser_fingerprint.svg?branch=master)](https://travis-ci.org/evantahler/browser_fingerprint)
 
 This module attempts to uniquely identify browsers by examining their header and connection information.  This information can be used as a "poor-man's" session identifier in your node projects. This module can optionally set a cookie to 'lock' in a consistent fingerprint.
 
