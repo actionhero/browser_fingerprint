@@ -1,6 +1,7 @@
 # Browser Fingerprint
 
-[![Build Status](https://travis-ci.org/actionhero/browser_fingerprint.svg?branch=master)](https://travis-ci.org/actionhero/browser_fingerprint)  [![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/browser_fingerprint.svg)](https://greenkeeper.io/)
+[![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
+[![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/browser_fingerprint.svg)](https://greenkeeper.io/)
 
 
 This module attempts to uniquely identify browsers by examining their header and connection information.  This information can be used as a "poor-man's" session identifier in your node projects. This module can optionally set a cookie to 'lock' in a consistent fingerprint.
