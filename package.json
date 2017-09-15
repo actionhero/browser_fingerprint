@@ -1,13 +1,13 @@
 {
   "author": "Evan Tahler <evantahler@gmail.com>",
   "name": "browser_fingerprint",
-  "description": "Uniquely identify browsers",
-  "version": "0.1.0",
+  "description": "uniquely identify browsers",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/evantahler/browser_fingerprint.git"
+    "url": "git://github.com/actionhero/browser_fingerprint.git"
   },
-  "main": "./lib/browser_fingerprint.js",
+  "main": "./lib/browserFingerprint.js",
   "keywords": [
     "browser",
     "fingerprint",
@@ -16,14 +16,28 @@
     "browser_fingerprint"
   ],
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {},
   "devDependencies": {
-    "standard": "^10.0.0"
+    "standard": "^10.0.3",
+    "mocha": "^3.5.3",
+    "request": "^2.81.0",
+    "should": "^13.0.1"
   },
   "scripts": {
-    "start": "./sample/sample.js",
-    "test": "standard"
+    "pretest": "standard",
+    "test": "mocha"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "expect"
+    ]
   }
 }
