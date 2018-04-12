@@ -140,4 +140,40 @@ describe('browser fingerpint', () => {
       done()
     })
   })
+
+  it('works with directives without value', (done) => {
+    let options = {settings: {httpOnly: null, secure: null}}
+    fingerprinter = new BrowserFingerpint(options)
+
+    request.get(url, (error, response) => {
+      should.not.exist(error)
+      let fingerprintCookie = response.headers['set-cookie'][0]
+      let httpOnlyDirective = fingerprintCookie.split(';')[1]
+      let secureDirective = fingerprintCookie.split(';')[2]
+
+      httpOnlyDirective.should.be.exactly('httpOnly')
+      secureDirective.should.be.exactly('secure')
+      done()
+    })
+  })
+
+  it('works with directives with and without value', (done) => {
+    let options = {settings: {expires: 3600000, httpOnly: null, path: '/', secure: null}}
+    fingerprinter = new BrowserFingerpint(options)
+
+    request.get(url, (error, response) => {
+      should.not.exist(error)
+      let fingerprintCookie = response.headers['set-cookie'][0]
+      let expiresDirective = fingerprintCookie.split(';')[1]
+      let httpOnlyDirective = fingerprintCookie.split(';')[2]
+      let pathDirective = fingerprintCookie.split(';')[3]
+      let secureDirective = fingerprintCookie.split(';')[4]
+
+      expiresDirective.should.containEql('expires=')
+      httpOnlyDirective.should.be.exactly('httpOnly')
+      secureDirective.should.be.exactly('secure')
+      pathDirective.should.be.exactly('path=/')
+      done()
+    })
+  })
 })
