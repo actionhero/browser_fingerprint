@@ -2,7 +2,7 @@ const path = require('path')
 const http = require('http')
 const request = require('request')
 const should = require('should')
-const BrowserFingerpint = require(path.join(__dirname, '..', 'lib', 'browser_fingerprint.js'))
+const BrowserFingerpint = require(path.join(__dirname, '..', 'lib', 'browserFingerprint.js'))
 
 const port = 8081
 const url = `http://localhost:${port}`
