@@ -3,6 +3,8 @@
 [![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
 [![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/browser_fingerprint.svg)](https://greenkeeper.io/)
 
+[![NPM](https://nodei.co/npm/browser_fingerprint.png)](https://nodei.co/npm/browser_fingerprint/)
+
 **Note: This package requires node v8, as it makes uses of native classes.**
 
 This module attempts to uniquely identify browsers by examining their header and connection information.  This information can be used as a "poor-man's" session identifier in your node projects. This module can optionally set a cookie to 'lock' in a consistent fingerprint.
