@@ -20,7 +20,7 @@ const options = {
 const fingerprinter = new BrowserFingerprint(options)
 
 http.createServer((req, res) => {
-  let {fingerprint, elementHash, headersHash} = fingerprinter.fingerprint(req)
+  let { fingerprint, elementHash, headersHash } = fingerprinter.fingerprint(req)
   headersHash['Content-Type'] = 'text/plain' // append any other headers you want
   res.writeHead(200, headersHash)
 

@@ -14,7 +14,7 @@ let fingerprint
 describe('browser fingerpint', () => {
   before(() => {
     server = http.createServer((req, res) => {
-      let {fingerprint, elementHash, headersHash} = fingerprinter.fingerprint(req)
+      let { fingerprint, elementHash, headersHash } = fingerprinter.fingerprint(req)
       headersHash['Content-Type'] = 'text/plain'
       res.writeHead(200, headersHash)
       let resp = `Fingerprint: ${fingerprint} \r\n\r\n`
@@ -52,7 +52,7 @@ describe('browser fingerpint', () => {
   })
 
   it('can have a custom cookieKey', (done) => {
-    fingerprinter = new BrowserFingerpint({cookieKey: 'myCookie'})
+    fingerprinter = new BrowserFingerpint({ cookieKey: 'myCookie' })
 
     request.get(url, (error, response) => {
       should.not.exist(error)
@@ -64,7 +64,7 @@ describe('browser fingerpint', () => {
   })
 
   it('can have more entropy', (done) => {
-    fingerprinter = new BrowserFingerpint({onlyStaticElements: false})
+    fingerprinter = new BrowserFingerpint({ onlyStaticElements: false })
 
     request.get(url, (error, response) => {
       should.not.exist(error)
@@ -79,12 +79,12 @@ describe('browser fingerpint', () => {
     fingerprinter = new BrowserFingerpint()
     let j = request.jar()
 
-    request.get(url, {jar: j}, (error, response) => {
+    request.get(url, { jar: j }, (error, response) => {
       should.not.exist(error)
       let fingerprintCookie = response.headers['set-cookie'][0]
       let thisFingerprint = fingerprintCookie.split('=')[1]
       response.body.should.containEql(thisFingerprint)
-      request.get(url, {jar: j}, (error, response) => {
+      request.get(url, { jar: j }, (error, response) => {
         should.not.exist(error)
         should.not.exist(response.headers['set-cookie'])
         response.body.should.containEql(thisFingerprint)
@@ -101,9 +101,9 @@ describe('browser fingerpint', () => {
       let fingerprintCookie = response.headers['set-cookie'][0]
       let thisFingerprint = fingerprintCookie.split('=')[1]
       response.body.should.containEql(thisFingerprint)
-      request.get(url, {headers: {
+      request.get(url, { headers: {
         '__browser_fingerprint': thisFingerprint
-      }}, (error, response) => {
+      } }, (error, response) => {
         should.not.exist(error)
         should.not.exist(response.headers['set-cookie'])
         response.body.should.containEql(thisFingerprint)
@@ -120,9 +120,9 @@ describe('browser fingerpint', () => {
       let fingerprintCookie = response.headers['set-cookie'][0]
       let thisFingerprint = fingerprintCookie.split('=')[1]
       response.body.should.containEql(thisFingerprint)
-      request.get(url, {headers: {
+      request.get(url, { headers: {
         'x-__browser_fingerprint': thisFingerprint
-      }}, (error, response) => {
+      } }, (error, response) => {
         should.not.exist(error)
         should.not.exist(response.headers['set-cookie'])
         response.body.should.containEql(thisFingerprint)
@@ -132,7 +132,7 @@ describe('browser fingerpint', () => {
   })
 
   it('can disable setting the cookie', (done) => {
-    fingerprinter = new BrowserFingerpint({toSetCookie: false})
+    fingerprinter = new BrowserFingerpint({ toSetCookie: false })
 
     request.get(url, (error, response) => {
       should.not.exist(error)
@@ -142,7 +142,7 @@ describe('browser fingerpint', () => {
   })
 
   it('works with directives without value', (done) => {
-    let options = {settings: {httpOnly: null, secure: null}}
+    let options = { settings: { httpOnly: null, secure: null } }
     fingerprinter = new BrowserFingerpint(options)
 
     request.get(url, (error, response) => {
@@ -158,7 +158,7 @@ describe('browser fingerpint', () => {
   })
 
   it('works with directives with and without value', (done) => {
-    let options = {settings: {expires: 3600000, httpOnly: null, path: '/', secure: null}}
+    let options = { settings: { expires: 3600000, httpOnly: null, path: '/', secure: null } }
     fingerprinter = new BrowserFingerpint(options)
 
     request.get(url, (error, response) => {
