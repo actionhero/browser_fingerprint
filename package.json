@@ -2,7 +2,7 @@
   "author": "Evan Tahler <evantahler@gmail.com>",
   "name": "browser_fingerprint",
   "description": "uniquely identify browsers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
