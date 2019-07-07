@@ -2,6 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
 [![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/browser_fingerprint.svg)](https://greenkeeper.io/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Factionhero%2Fbrowser_fingerprint.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Factionhero%2Fbrowser_fingerprint?ref=badge_shield)
 
 [![NPM](https://nodei.co/npm/browser_fingerprint.png)](https://nodei.co/npm/browser_fingerprint/)
 
@@ -46,3 +47,7 @@ http.createServer((req, res) => {
 console.log(`server running at http://127.0.0.1:${port}`)
 ```
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Factionhero%2Fbrowser_fingerprint.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Factionhero%2Fbrowser_fingerprint?ref=badge_large)
