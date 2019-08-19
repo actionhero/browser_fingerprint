@@ -101,9 +101,11 @@ describe('browser fingerpint', () => {
       const fingerprintCookie = response.headers['set-cookie'][0]
       const thisFingerprint = fingerprintCookie.split('=')[1]
       response.body.should.containEql(thisFingerprint)
-      request.get(url, { headers: {
-        __browser_fingerprint: thisFingerprint
-      } }, (error, response) => {
+      request.get(url, {
+        headers: {
+          __browser_fingerprint: thisFingerprint
+        }
+      }, (error, response) => {
         should.not.exist(error)
         should.not.exist(response.headers['set-cookie'])
         response.body.should.containEql(thisFingerprint)
@@ -120,9 +122,11 @@ describe('browser fingerpint', () => {
       const fingerprintCookie = response.headers['set-cookie'][0]
       const thisFingerprint = fingerprintCookie.split('=')[1]
       response.body.should.containEql(thisFingerprint)
-      request.get(url, { headers: {
-        'x-__browser_fingerprint': thisFingerprint
-      } }, (error, response) => {
+      request.get(url, {
+        headers: {
+          'x-__browser_fingerprint': thisFingerprint
+        }
+      }, (error, response) => {
         should.not.exist(error)
         should.not.exist(response.headers['set-cookie'])
         response.body.should.containEql(thisFingerprint)
