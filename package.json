@@ -24,7 +24,7 @@
     "mocha": "^6.2.0",
     "request": "^2.88.0",
     "should": "^13.2.3",
-    "standard": "^14.0.0"
+    "standard": "^14.1.0"
   },
   "scripts": {
     "pretest": "standard",
