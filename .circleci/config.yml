@@ -1,14 +1,13 @@
 version: 2
 
-refrences:
-
+references:
   cache-options: &cache-options
     key: package-cache-{{ checksum "package.json" }}
 
 jobs:
   build:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:12
     steps:
       - checkout
       - restore_cache:
@@ -16,9 +15,6 @@ jobs:
       - run:
           name: npm-install
           command: npm install
-      - run:
-          name: test-reporter-setup
-          command: npm install mocha-junit-reporter --no-save
       - save_cache:
           <<: *cache-options
           paths:
@@ -26,27 +22,17 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:12
     steps:
       - checkout
       - restore_cache:
           <<: *cache-options
       - run:
           name: linter
-          command: ./node_modules/.bin/standard
-      - run:
-          name: test-reporter-setup
-          command: mkdir ./junit
+          command: npm run lint
       - run:
           name: test
-          command: ./node_modules/.bin/mocha test --reporter mocha-junit-reporter
-          environment:
-            MOCHA_FILE: ./junit/mocha.xml
-            NODE_ENV: test
-      - store_test_results:
-          path: ./junit
-      - store_artifacts:
-          path: ./junit
+          command: ./node_modules/.bin/jest --ci
 
 workflows:
   version: 2
