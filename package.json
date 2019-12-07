@@ -2,7 +2,7 @@
   "author": "Evan Tahler <evan@delicioushat.com>",
   "name": "browser_fingerprint",
   "description": "uniquely identify browsers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "test": "jest",
     "pretest": "npm run lint && npm run build",
     "prepare": "npm run build",
-    "build": "rm -rf dist && ./node_modules/.bin/tsc --declaration",
+    "build": "tsc",
     "lint": "prettier --check src/**.ts __test__/**.ts"
   },
   "jest": {
