@@ -1,5 +1,5 @@
 {
-  "author": "Evan Tahler <evantahler@gmail.com>",
+  "author": "Evan Tahler <evan@delicioushat.com>",
   "name": "browser_fingerprint",
   "description": "uniquely identify browsers",
   "version": "1.0.5",
@@ -8,10 +8,12 @@
     "type": "git",
     "url": "git://github.com/actionhero/browser_fingerprint.git"
   },
-  "main": "./lib/browserFingerprint.js",
+  "main": "./dist/browserFingerprint",
+  "types": "./dist/browserFingerprint",
   "keywords": [
     "browser",
     "fingerprint",
+    "fingerprinting",
     "session",
     "browserFingerprint",
     "browser_fingerprint"
@@ -21,24 +23,27 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^6.2.0",
-    "request": "^2.88.0",
-    "should": "^13.2.3",
-    "standard": "^14.1.0"
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "request-promise-native": "^1.0.8",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
   },
   "scripts": {
-    "pretest": "standard",
-    "test": "mocha"
+    "test": "jest",
+    "pretest": "npm run lint && npm run build",
+    "prepare": "npm run build",
+    "build": "rm -rf dist && ./node_modules/.bin/tsc --declaration",
+    "lint": "prettier --check src/**.ts __test__/**.ts"
   },
-  "standard": {
-    "globals": [
-      "describe",
-      "before",
-      "beforeEach",
-      "after",
-      "afterEach",
-      "it",
-      "expect"
-    ]
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/testPlugin"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
   }
 }
