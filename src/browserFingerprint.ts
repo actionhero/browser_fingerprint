@@ -25,7 +25,7 @@ export class BrowserFingerprint {
     return {
       cookieKey: "__browser_fingerprint",
       toSetCookie: true,
-      onlyStaticElements: false
+      onlyStaticElements: false,
     };
   }
 
@@ -52,7 +52,7 @@ export class BrowserFingerprint {
       return {
         fingerprint,
         elementHash: { clientCookie: fingerprint },
-        headersHash: {}
+        headersHash: {},
       };
     }
 
@@ -61,7 +61,7 @@ export class BrowserFingerprint {
       return {
         fingerprint,
         elementHash: { clientCookie: fingerprint },
-        headersHash: {}
+        headersHash: {},
       };
     }
 
@@ -72,7 +72,7 @@ export class BrowserFingerprint {
       return {
         fingerprint,
         elementHash: { clientCookie: fingerprint },
-        headersHash: {}
+        headersHash: {},
       };
     }
 
@@ -89,7 +89,7 @@ export class BrowserFingerprint {
       remotePort: undefined,
       rand: undefined,
       time: undefined,
-      hashedPid: undefined
+      hashedPid: undefined,
     };
 
     // these elements add greater entropy to the fingerprint, but aren't guaranteed to be the same upon each request
@@ -151,11 +151,11 @@ export class BrowserFingerprint {
         }
         headersHash = {
           "Set-Cookie":
-            this.options.cookieKey + "=" + fingerprint + ";" + settingsParams
+            this.options.cookieKey + "=" + fingerprint + ";" + settingsParams,
         };
       } else {
         headersHash = {
-          "Set-Cookie": this.options.cookieKey + "=" + fingerprint
+          "Set-Cookie": this.options.cookieKey + "=" + fingerprint,
         };
       }
     }
@@ -188,7 +188,7 @@ export class BrowserFingerprint {
   parseCookies(req) {
     const cookies = {};
     if (req.headers.cookie != null) {
-      req.headers.cookie.split(";").forEach(cookie => {
+      req.headers.cookie.split(";").forEach((cookie) => {
         const parts = cookie.split("=");
         cookies[parts[0].trim()] = (parts[1] || "").trim();
       });
