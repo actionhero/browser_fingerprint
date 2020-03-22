@@ -1,7 +1,7 @@
 # Browser Fingerprint
 
 [![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
-[![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/browser_fingerprint.svg)](https://greenkeeper.io/)
+
 
 [![NPM](https://nodei.co/npm/browser_fingerprint.png)](https://nodei.co/npm/browser_fingerprint/)
 
