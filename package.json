@@ -23,20 +23,20 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^25.1.0",
-    "@types/node": "^13.1.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.3",
+    "jest": "^25.1.0",
+    "prettier": "^2.0.1",
     "request-promise-native": "^1.0.8",
-    "ts-jest": "^25.1.0",
-    "typescript": "^3.7.3"
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "test": "jest",
     "pretest": "npm run lint && npm run build",
     "prepare": "npm run build",
-    "build": "tsc",
-    "lint": "prettier --check src/**.ts __test__/**.ts"
+    "build": "tsc --declaration",
+    "lint": "prettier --check src __tests__"
   },
   "jest": {
     "testPathIgnorePatterns": [

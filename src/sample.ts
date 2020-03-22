@@ -13,8 +13,8 @@ const options = {
   onlyStaticElements: true,
   settings: {
     path: "/",
-    expires: 3600000
-  }
+    expires: 3600000,
+  },
 };
 
 const fingerPrinter = new BrowserFingerprint(options);

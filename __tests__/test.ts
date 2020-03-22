@@ -18,7 +18,7 @@ describe("browser fingerpint", () => {
         const {
           fingerprint,
           elementHash,
-          headersHash
+          headersHash,
         } = fingerPrinter.fingerprint(req);
         headersHash["Content-Type"] = "text/plain";
         res.writeHead(200, headersHash);
@@ -37,7 +37,7 @@ describe("browser fingerpint", () => {
 
   it("works with defaults", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -47,7 +47,7 @@ describe("browser fingerpint", () => {
 
   it("will generate a new fingerprint for a new request", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -57,7 +57,7 @@ describe("browser fingerpint", () => {
 
   it("can have a custom cookieKey", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -67,7 +67,7 @@ describe("browser fingerpint", () => {
 
   it("can have more entropy", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -80,7 +80,7 @@ describe("browser fingerpint", () => {
 
     const { body, headers } = await request.get(url, {
       jar,
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -89,7 +89,7 @@ describe("browser fingerpint", () => {
 
     const secondResponse = await request.get(url, {
       jar,
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     expect(secondResponse.headers["set-cookie"]).toBeUndefined();
@@ -98,7 +98,7 @@ describe("browser fingerpint", () => {
 
   it("will return the same fingerprint if the cookie is already set via header, and not re-set the cookie", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -107,9 +107,9 @@ describe("browser fingerpint", () => {
 
     const secondResponse = await request.get(url, {
       headers: {
-        __browser_fingerprint: thisFingerprint
+        __browser_fingerprint: thisFingerprint,
       },
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     expect(secondResponse.headers["set-cookie"]).toBeUndefined();
@@ -118,7 +118,7 @@ describe("browser fingerpint", () => {
 
   it("will return the same fingerprint if the cookie is already set via x-header, and not re-set the cookie", async () => {
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -127,9 +127,9 @@ describe("browser fingerpint", () => {
 
     const secondResponse = await request.get(url, {
       headers: {
-        "x-__browser_fingerprint": thisFingerprint
+        "x-__browser_fingerprint": thisFingerprint,
       },
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     expect(secondResponse.headers["set-cookie"]).toBeUndefined();
@@ -140,7 +140,7 @@ describe("browser fingerpint", () => {
     fingerPrinter = new BrowserFingerprint({ toSetCookie: false });
 
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     expect(headers["set-cookie"]).toBeUndefined();
@@ -151,7 +151,7 @@ describe("browser fingerpint", () => {
     fingerPrinter = new BrowserFingerprint(options);
 
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
@@ -164,12 +164,12 @@ describe("browser fingerpint", () => {
 
   it("works with directives with and without value", async () => {
     const options = {
-      settings: { expires: 3600000, httpOnly: null, path: "/", secure: null }
+      settings: { expires: 3600000, httpOnly: null, path: "/", secure: null },
     };
     fingerPrinter = new BrowserFingerprint(options);
 
     const { body, headers } = await request.get(url, {
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
     });
 
     const fingerprintCookie = headers["set-cookie"][0];
