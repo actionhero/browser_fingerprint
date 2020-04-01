@@ -33,7 +33,7 @@ const fingerPrinter = new BrowserFingerprint(options);
 
 http
   .createServer((req, res) => {
-    let { fingerprint, elementHash, headersHash } = fingerPrinter.fingerprint(
+    let { fingerprint, elementsHash, headersHash } = fingerPrinter.fingerprint(
       req
     );
     headersHash["Content-Type"] = "text/plain"; // append any other headers you want
