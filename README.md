@@ -15,7 +15,7 @@ Resuming sessions require that either the cookie be returned to the server, or a
 const http = require("http");
 const port = 8080;
 
-const BrowserFingerprint = require("browser_fingerprint");
+const BrowserFingerprint = require("browser_fingerprint").BrowserFingerprint;
 
 // these are the default options
 const options = {
@@ -33,7 +33,7 @@ const fingerPrinter = new BrowserFingerprint(options);
 
 http
   .createServer((req, res) => {
-    let { fingerprint, elementHash, headersHash } = fingerPrinter.fingerprint(
+    let { fingerprint, elementsHash, headersHash } = fingerPrinter.fingerprint(
       req
     );
     headersHash["Content-Type"] = "text/plain"; // append any other headers you want
