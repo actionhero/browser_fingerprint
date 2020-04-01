@@ -15,7 +15,7 @@ Resuming sessions require that either the cookie be returned to the server, or a
 const http = require("http");
 const port = 8080;
 
-const BrowserFingerprint = require("browser_fingerprint");
+const BrowserFingerprint = require("browser_fingerprint").BrowserFingerprint;
 
 // these are the default options
 const options = {
