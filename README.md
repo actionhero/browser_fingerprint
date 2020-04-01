@@ -2,7 +2,6 @@
 
 [![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
 
-
 [![NPM](https://nodei.co/npm/browser_fingerprint.png)](https://nodei.co/npm/browser_fingerprint/)
 
 **Note: This package requires node v8, as it makes uses of native classes.**
@@ -15,7 +14,7 @@ Resuming sessions require that either the cookie be returned to the server, or a
 const http = require("http");
 const port = 8080;
 
-const BrowserFingerprint = require("browser_fingerprint").BrowserFingerprint;
+const { BrowserFingerprint } = require("browser_fingerprint");
 
 // these are the default options
 const options = {
@@ -25,8 +24,8 @@ const options = {
   settings: {
     path: "/",
     expires: 3600000,
-    httpOnly: null
-  }
+    httpOnly: null,
+  },
 };
 
 const fingerPrinter = new BrowserFingerprint(options);
