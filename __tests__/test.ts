@@ -15,11 +15,8 @@ describe("browser fingerpint", () => {
   beforeAll(() => {
     server = http
       .createServer((req, res) => {
-        const {
-          fingerprint,
-          elementHash,
-          headersHash,
-        } = fingerPrinter.fingerprint(req);
+        const { fingerprint, elementHash, headersHash } =
+          fingerPrinter.fingerprint(req);
         headersHash["Content-Type"] = "text/plain";
         res.writeHead(200, headersHash);
         let resp = `Fingerprint: ${fingerprint} \r\n\r\n`;

@@ -21,9 +21,8 @@ const fingerPrinter = new BrowserFingerprint(options);
 
 http
   .createServer((req, res) => {
-    const { fingerprint, elementHash, headersHash } = fingerPrinter.fingerprint(
-      req
-    );
+    const { fingerprint, elementHash, headersHash } =
+      fingerPrinter.fingerprint(req);
     headersHash["Content-Type"] = "text/plain"; // append any other headers you want
     res.writeHead(200, headersHash);
 
