@@ -1,6 +1,6 @@
 # Browser Fingerprint
 
-[![Build Status](https://circleci.com/gh/actionhero/browser_fingerprint.png)](https://circleci.com/gh/actionhero/browser_fingerprint.png)
+[![test](https://github.com/actionhero/browser_fingerprint/actions/workflows/test.yml/badge.svg)](https://github.com/actionhero/browser_fingerprint/actions/workflows/test.yml)
 
 [![NPM](https://nodei.co/npm/browser_fingerprint.png)](https://nodei.co/npm/browser_fingerprint/)
 
