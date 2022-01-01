@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 
-const http = require("http");
+import * as http from "http";
 const port = 8080;
 
 // const browserFingerprint = require('browser_fingerprint'); <<-- Normally, you would do this

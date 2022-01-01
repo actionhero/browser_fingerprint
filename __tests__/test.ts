@@ -1,4 +1,3 @@
-import * as path from "path";
 import * as http from "http";
 import * as request from "request-promise-native";
 import { BrowserFingerprint } from "./../src/browserFingerprint";
@@ -7,21 +6,20 @@ const port = 8081;
 const url = `http://localhost:${port}`;
 
 let fingerPrinter = new BrowserFingerprint();
-
-let server;
-let fingerprint;
+let server: http.Server;
+let fingerprint: string;
 
 describe("browser fingerpint", () => {
   beforeAll(() => {
     server = http
       .createServer((req, res) => {
-        const { fingerprint, elementHash, headersHash } =
+        const { fingerprint, elementsHash, headersHash } =
           fingerPrinter.fingerprint(req);
         headersHash["Content-Type"] = "text/plain";
         res.writeHead(200, headersHash);
         let resp = `Fingerprint: ${fingerprint} \r\n\r\n`;
-        for (const i in elementHash) {
-          resp += `Element ${i}: ${elementHash[i]}\r\n`;
+        for (const i in elementsHash) {
+          resp += `Element ${i}: ${elementsHash[i]}\r\n`;
         }
         res.end(resp);
       })
@@ -144,6 +142,7 @@ describe("browser fingerpint", () => {
   });
 
   it("works with directives without value", async () => {
+    // @ts-ignore
     const options = { settings: { httpOnly: null, secure: null } };
     fingerPrinter = new BrowserFingerprint(options);
 
@@ -161,6 +160,7 @@ describe("browser fingerpint", () => {
 
   it("works with directives with and without value", async () => {
     const options = {
+      // @ts-ignore
       settings: { expires: 3600000, httpOnly: null, path: "/", secure: null },
     };
     fingerPrinter = new BrowserFingerprint(options);
