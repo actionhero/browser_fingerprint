@@ -21,59 +21,46 @@ export class BrowserFingerprint {
     this.hashedPid();
   }
 
-  defaults() {
-    return {
-      cookieKey: "__browser_fingerprint",
-      toSetCookie: true,
-      onlyStaticElements: false,
-    };
-  }
-
   /**
    * The goal is to come up with as many *potentially* unique traits for the connection and add them to the elementsHash.
    * The collection of all the elementsHash keys will *hopefully* be unique enough for fingerprinting
    * Then, we save this hash in a cookie for later retrieval
    */
-  fingerprint(req: IncomingMessage) {
+  fingerprint(req: IncomingMessage): {
+    fingerprint: string;
+    headersHash: Record<string, string>;
+    elementsHash: Record<string, string | number>;
+  } {
     let fingerprint: string;
     let key: string;
     let value: string;
+    let headersHash: Record<string, string> = {};
+    let elementsHash: Record<string, string | number> = {
+      clientCookie: fingerprint,
+    };
     const cookies = this.parseCookies(req);
 
-    const defaults = this.defaults();
-    for (const i in defaults) {
-      if (this.options[i] == null) {
-        this.options[i] = defaults[i];
-      }
-    }
+    // set defaults
+    this.options.cookieKey = this.options.cookieKey ?? "__browser_fingerprint";
+    this.options.toSetCookie = this.options.toSetCookie ?? true;
+    this.options.onlyStaticElements = this.options.onlyStaticElements ?? false;
 
+    // early returns
     if (cookies[this.options.cookieKey] != null) {
       fingerprint = cookies[this.options.cookieKey];
-      return {
-        fingerprint,
-        elementHash: { clientCookie: fingerprint },
-        headersHash: {},
-      };
+      return { fingerprint, elementsHash, headersHash };
     }
 
     if (req.headers[this.options.cookieKey] != null) {
       fingerprint = req.headers[this.options.cookieKey] as string;
-      return {
-        fingerprint,
-        elementHash: { clientCookie: fingerprint },
-        headersHash: {},
-      };
+      return { fingerprint, elementsHash, headersHash };
     }
 
     if (req.headers[("x-" + this.options.cookieKey).toLowerCase()] != null) {
       fingerprint = req.headers[
         ("x-" + this.options.cookieKey).toLowerCase()
       ] as string;
-      return {
-        fingerprint,
-        elementHash: { clientCookie: fingerprint },
-        headersHash: {},
-      };
+      return { fingerprint, elementsHash, headersHash };
     }
 
     let remoteAddress = req.headers["x-forwarded-for"];
@@ -81,15 +68,15 @@ export class BrowserFingerprint {
       remoteAddress = req.connection.remoteAddress;
     }
 
-    let elementsHash = {
+    elementsHash = {
       httpVersion: req.httpVersion,
       remoteAddress: remoteAddress as string,
       cookieKey: this.options.cookieKey,
       hashedHostName: this.hashedHostName(),
-      remotePort: undefined,
-      rand: undefined,
-      time: undefined,
-      hashedPid: undefined,
+      remotePort: undefined as number,
+      rand: undefined as number,
+      time: undefined as number,
+      hashedPid: undefined as string | number,
     };
 
     // these elements add greater entropy to the fingerprint, but aren't guaranteed to be the same upon each request
@@ -108,14 +95,13 @@ export class BrowserFingerprint {
         continue;
       }
       key = "header_" + j;
-      elementsHash[key] = req.headers[j];
+      elementsHash[key] = String(req.headers[j]);
     }
 
     //@ts-ignore
     elementsHash = this.sortAndStringObject(elementsHash);
     fingerprint = this.calculateHashFromElements(elementsHash);
 
-    let headersHash = {};
     if (this.options.toSetCookie === true) {
       if (
         this.options.settings !== undefined &&
@@ -185,10 +171,10 @@ export class BrowserFingerprint {
     }
   }
 
-  parseCookies(req) {
-    const cookies = {};
+  parseCookies(req: IncomingMessage) {
+    const cookies: Record<string, string> = {};
     if (req.headers.cookie != null) {
-      req.headers.cookie.split(";").forEach((cookie) => {
+      req.headers.cookie.split(";").forEach((cookie: string) => {
         const parts = cookie.split("=");
         cookies[parts[0].trim()] = (parts[1] || "").trim();
       });
@@ -197,12 +183,9 @@ export class BrowserFingerprint {
     return cookies;
   }
 
-  calculateHashFromElements(elementsHash) {
+  calculateHashFromElements(elementsHash: Record<string, string | number>) {
     const shaSum = crypto.createHash("sha1");
-    for (const i in elementsHash) {
-      shaSum.update(elementsHash[i]);
-    }
-
+    for (const i in elementsHash) shaSum.update(String(elementsHash[i]));
     return shaSum.digest("hex");
   }
 
