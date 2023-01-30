@@ -39,8 +39,8 @@ http
     res.writeHead(200, headersHash);
 
     let resp = `Your Browser Fingerprint: ${fingerprint} \r\n\r\n`;
-    for (let i in elementHash) {
-      resp += `Element ${i}: ${elementHash[i]}\r\n`;
+    for (let i in elementsHash) {
+      resp += `Element ${i}: ${elementsHash[i]}\r\n`;
     }
 
     res.end(resp);
