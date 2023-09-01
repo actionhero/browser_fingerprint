@@ -36,7 +36,7 @@ http
       "request from " +
         req.connection.remoteAddress +
         ", fingerprint -> " +
-        fingerprint
+        fingerprint,
     );
   })
   .listen(port);
