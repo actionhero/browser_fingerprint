@@ -125,7 +125,7 @@ export class BrowserFingerprint {
               value = this.options.settings[key];
               if (key === "expires") {
                 value = new Date(
-                  new Date().getTime() + this.options.settings[key]
+                  new Date().getTime() + this.options.settings[key],
                 ).toUTCString();
               }
               settingsParams =
